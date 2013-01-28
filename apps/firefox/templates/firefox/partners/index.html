@@ -1,0 +1,233 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. #}
+
+{% extends "base-resp.html" %}
+
+{% block body_class %}sky{% endblock %}
+
+{% block extrahead %}
+  {{ css('partners') }}
+{% endblock %}
+
+{% block site_js %}
+  {{ js('mozorg-resp') }}
+{% endblock %}
+
+{% block js %}
+  {{ js('partners') }}
+{% endblock %}
+
+{% block site_header %}
+  <header id="masthead">
+    <a href="http://www.mozilla.org/" id="tabzilla">{{ _('Mozilla') }}</a>
+
+    {% block site_header_nav %}
+    <nav id="nav-main" role="navigation">
+      <span class="toggle" role="button" aria-controls="nav-main-menu" tabindex="0">{{_('Menu')}}</span>
+      <ul id="nav-main-menu">
+        <li class="first"><a href="#overview">{{_('Overview')}}</a></li>
+        <li><a href="#os">{{_('OS')}}</a></li>
+        <li><a href="#marketplace">{{_('Marketplace')}}</a></li>
+        <li class="last"><a href="#android">{{_('Android')}}</a></li>
+      </ul>
+    </nav>
+    {% endblock %}
+
+  </header>
+  <nav id="partner-nav" role="navigation">
+    <ul id="partner-menu">
+      <li id="menu-overview"><a href="#overview">{{_('Overview')}}</a></li>
+      <li id="menu-os"><a href="#os">{{_('OS')}}</a></li>
+      <li id="menu-marketplace"><a href="#marketplace">{{_('Marketplace')}}</a></li>
+      <li id="menu-android"><a href="#android">{{_('Android')}}</a></li>
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+<div id="phone"></div>
+
+<article id="overview" class="partner-article">
+  <section class="section-1">
+    <div class="article-content">
+      <h2>Greatest. Headline. Ever.</h2>
+      <div class="intro">
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <ul class="logos">
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</article>
+
+<article id="os" class="partner-article">
+  <div id="giantfox"></div>
+  <section id="os-overview" class="section-1" data-pos="1">
+    <div class="article-content">
+      <h2 id="os-overview-headline" class="tween">Another. Giant. Headline.</h2>
+      <div id="os-overview-intro" class="intro tween">
+        <p>
+          <a href="" class="view-section" data-section="os-partners">OS Partners</a>
+        </p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <ul id="os-overview-logos" class="logos tween">
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="os-partners" class="section-2" data-pos="2">
+    <div class="article-content">
+      <h2 id="os-partners-headline" class="tween">OS Partners</h2>
+      <div id="os-partners-intro" class="intro tween">
+        <p>
+          <a href="" class="view-section" data-section="os-overview">OS Overview</a>
+        </p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <ul id="os-partners-logos" class="logos tween">
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</article>
+
+<article id="marketplace" class="partner-article">
+  <section id="marketplace-overview" class="section-1" data-pos="1">
+    <div class="article-content">
+      <h2 id="marketplace-overview-headline" class="tween" data-tween="slide_right">Marketplace overview</h2>
+      <div id="marketplace-overview-intro" class="intro tween" data-tween="slide_right">
+        <p>
+          <a href="" class="view-section" data-section="marketplace-partners">Marketplace Partners</a>
+          <a href="" class="view-section" data-section="marketplace-developers">Marketplace Developers</a>
+        </p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <ul id="marketplace-overview-logos" class="logos tween" data-tween="slide_right">
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="marketplace-partners" class="section-2" data-pos="2">
+    <div class="article-content">
+      <h2 id="marketplace-partners-headline" class="tween" data-tween="slide_right">Marketplace partners</h2>
+      <div id="marketplace-partners-intro" class="intro tween" data-tween="slide_right">
+        <p>
+          <a href="" class="view-section" data-section="marketplace-overview">Marketplace Overview</a>
+          <a href="" class="view-section" data-section="marketplace-developers">Marketplace Developers</a>
+        </p>
+
+        <p>Lorem, etc.</p>
+      </div>
+    </div>
+  </section>
+  <section id="marketplace-developers" class="section-3" data-pos="3">
+    <div class="article-content">
+      <h2 id="marketplace-developers-headline" class="tween" data-tween="slide_right">Marketplace developers</h2>
+      <div id="marketplace-developers-intro" class="intro tween" data-tween="slide_right">
+        <p>
+          <a href="" class="view-section" data-section="marketplace-overview">Marketplace Overview</a>
+          <a href="" class="view-section" data-section="marketplace-partners">Marketplace Partners</a>
+        </p>
+
+        <p>Lorem, etc.</p>
+      </div>
+    </div>
+  </section>
+</article>
+
+<article id="android" class="partner-article">
+  <section id="android-overview" class="section-1" data-pos="1">
+    <div class="article-content">
+      <h2 id="android-overview-headline" class="tween" data-tween="slide_left">Android overview</h2>
+      <div id="android-overview-intro" class="intro tween" data-tween="slide_left">
+        <p>
+          <a href="" class="view-section" data-section="android-partners">Android Partners</a>
+        </p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <p>Dempta enim aeternitate nihilo beatior Iuppiter quam Epicurus; Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Videamus igitur sententias eorum, tum ad verba redeamus. Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant.</p>
+        <ul id="android-overview-logos" class="logos tween" data-tween="slide_left">
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+          <li>logo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="android-partners" class="section-2" data-pos="2">
+    <div class="article-content">
+      <h2 id="android-partners-headline" class="tween" data-tween="slide_left">Android partners</h2>
+      <div id="android-partners-intro" class="intro tween" data-tween="slide_left">
+        <p>
+          <a href="" class="view-section" data-section="android-overview">Android Overview</a>
+        </p>
+        <p>Lorem, etc.</p>
+      </div>
+    </div>
+  </section>
+</article>
+
+
+{% endblock %}
+
+{% block email_form %}{% endblock %}
