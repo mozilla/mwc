@@ -6,7 +6,7 @@
 
     // i heard document.ready isn't necessary anymore. just trying it out...
     //$(document).ready(function () {
-        $('#foxtail').sprite({fps: 24, no_of_frames: 44, rewind: true});
+        $('#foxtail').sprite({fps: 12, no_of_frames: 44, rewind: true});
 
         // Smooth scroll-to for left menu navigation
         $('#partner-nav a, #nav-main-menu a').click(function() {
@@ -53,11 +53,11 @@
         });
 
         $('a[data-section="os-partners"]').on('click', function() {
-            $giantfox.css('left', '-48%');
+            $giantfox.css('left', '-720px');
         });
 
         $('a[data-section="os-overview"]').on('click', function() {
-            $giantfox.css('left', '52%');
+            $giantfox.css('left', '600px');
         });
 
         var controller = $.superscrollorama();
@@ -75,8 +75,8 @@
         };
 
         tweens.giantfox = {
-            from: { css: { left: '60%', opacity: 0 }, immediateRender: true },
-            to: { css: { left: '52%', opacity: 1 } }
+            from: { css: { left: '800px', opacity: 0 }, immediateRender: true },
+            to: { css: { left: '600px', opacity: 1 } }
         };
 
         $('.partner-article').each(function(i, article) {
