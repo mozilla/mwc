@@ -21,6 +21,20 @@
     }
 }
 
+.partner-button {
+    .button {
+        font-size: 18px;
+        &:after {
+            content: " ";
+            display: inline-block;
+            height: 24px;
+            width: 20px;
+            vertical-align: middle;
+            margin-left: 10px;
+            background: url(/media/img/sandstone/buttons/arrow-go-r.png) 0 0;
+        }
+    }
+}
 
 
 /* {{{ Template overrides */
@@ -86,6 +100,9 @@
 /* {{{ Left menu */
 
 #partner-nav {
+    h3 {
+        display: none;
+    }
     ul {
         padding: 0;
         margin: 0;
@@ -141,15 +158,32 @@ h2 {
     position: relative;
     .top {
         background: url(/media/img/firefox/partners/top.png) 50% 50% no-repeat;
-        position: absolute;
         display: block;
-        top: 0;
-        left: -40px;
         height: 40px;
         width: 40px;
         line-height: 80px;
         overflow: hidden;
         text-indent: 100%;
+    }
+}
+
+/* }}} */
+/* {{{ Dark-blue articles  */
+
+.partner-article.dark {
+    #gradient > .vertical(#0f9fdb, #0055a0);
+    color: #fff;
+    text-shadow: none;
+    p,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: #fff;
+        text-shadow: none;
+    }
+    a {
+       color: #ffd200;
     }
 }
 
@@ -171,16 +205,6 @@ h2 {
 /* {{{ Firefox OS section */
 
 #os {
-    #gradient > .vertical(#0f9fdb, #0055a0);
-    color: #fff;
-    text-shadow: none;
-    p,
-    h2,
-    h3,
-    h4 {
-        color: #fff;
-        text-shadow: none;
-    }
     h3 {
         font-size: 32px;
     }
@@ -213,7 +237,6 @@ h2 {
                 }
                 a {
                     display: block;
-                    color: #ffd200;
                     font-style: italic;
                     &:after {
                         content: " »";
@@ -227,15 +250,47 @@ h2 {
 /* }}} */
 /* {{{ Firefox for Android section */
 
-#android {
-    #gradient > .vertical(#0f9fdb, #0055a0);
-    color: #fff;
-    text-shadow: none;
-    h2 {
-        font-size: 30px;
-        .span-all();
-        color: #fff;
-        text-shadow: none;
+/* }}} */
+/* {{{ Firefox for Android section */
+
+#form {
+
+    display: none;
+
+    #sf-form label {
+        color: @textColorTertiary;
+    }
+
+    #sf-form .field {
+        padding: 5px 0;
+    }
+
+    #sf-form input,
+    #sf-form select,
+    #sf-form textarea {
+        width: 200px
+    }
+
+    #sf-form select {
+        width : 100%;
+    }
+
+    #sf-form .footer-field input {
+        width: 218px;
+    }
+
+    #sf-form input.error {
+        border-color: rgb(175,50,50);
+        @shadow: 0 2px 1px rgba(0,0,0,0.1) inset, 0 0 8px 0 rgba(175,50,50,.6);
+        .box-shadow(@shadow);
+    }
+
+    #sf-form label.error {
+        .open-sans;
+        font-size: 12px;
+        color: rgb(175,50,50);
+        font-weight: bold;
+        text-transform: uppercase;
     }
 }
 
@@ -305,6 +360,13 @@ h2 {
     #overview {
         h2 {
             font-size: 42px;
+        }
+    }
+
+    .logos {
+        li {
+            margin-left: 16px;
+            margin-right: 16px;
         }
     }
 
