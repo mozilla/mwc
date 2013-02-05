@@ -6,10 +6,11 @@
 
     // i heard document.ready isn't necessary anymore. just trying it out...
     //$(document).ready(function () {
+        // set up foxtail sprite animation
         $('#foxtail').sprite({fps: 12, no_of_frames: 44, rewind: true});
 
         // Smooth scroll-to for left menu navigation
-        $('#partner-nav a, #nav-main-menu a').click(function(e) {
+        $('#partner-nav a[class!="no-scroll"], #nav-main-menu a').click(function(e) {
             var elementClicked = $(this).attr("href");
             var destination;
 
@@ -33,9 +34,22 @@
             return false;
         });
 
+        // move form out of overlay
+        var $form = $('#form').detach();
+        $('#article-wrapper').after($form);
+
+        $('#toggle-form').pageslide({
+            direction: 'left'
+        });
+
         var $giantfox = $('#giantfox');
+        var $giantfox_tail = $('#giantfox-foreground');
         var $phone = $('#phone-common');
         var $phone_android = $('#phone-android');
+        var $overview = $('#overview');
+        var $os = $('#os');
+        var $marketplace = $('#marketplace');
+        var $android = $('#android');
 
         // side scrolling sections
         $('.view-section').on('click', function(e) {
@@ -73,6 +87,13 @@
 
             // update current section
             dest.attr('data-current', 1);
+
+            // slide phone?
+            if (dest_pos > 1) {
+                $phone.animate({ 'left': '-50%' }, 500);
+            } else {
+                $phone.animate({ 'left': '50%' }, 500);
+            }
         });
 
         $('a[data-section="os-operators"]').on('click', function() {
@@ -83,11 +104,53 @@
             $giantfox.css('left', '45%');
         });
 
+        var _move_phone = function(top_pos, slide, new_z) {
+            var cur_left = parseInt($phone.css('left'), 10);
+
+            if (Number(slide.find('section:first').attr('data-current')) === 1) {
+                if (cur_left < 0) {
+                    if (new_z) {
+                        $phone.css('z-index', new_z);
+                    }
+
+                    $phone.animate({
+                        top: top_pos
+                    }, 100, function() {
+                        $phone.animate({ 'left': '50%' }, 500);
+                    });
+                } else {
+                    $phone.animate({ 'top': top_pos + 'px' }, 500, function() {
+                        if (new_z) {
+                            $phone.css('z-index', new_z);
+                        }
+                    });
+                }
+            } else {
+                if (cur_left > 0) {
+                    $phone.animate({
+                        'left': '-50%'
+                    }, 500, function() {
+                        $phone.css('top', top_pos + 'px');
+
+                        if (new_z) {
+                            $phone.css('z-index', new_z);
+                        }
+                    });
+                } else {
+                    if (new_z) {
+                        $phone.css('z-index', new_z);
+                    }
+
+                    $phone.animate({ 'top': top_pos + 'px' }, 500);
+                }
+            }
+        };
+
         var controller = $.superscrollorama();
 
         var tweens = {};
 
-        tweens.slide_down = {
+        tweens.slide_up = {
             from: {
                 css: { top: 80, opacity: 0 },
                 immediateRender: true
@@ -102,11 +165,14 @@
             },
             to: {
                 css: { top: -120 },
+                onStart: function() {
+                    $phone.css('z-index', 110);
+                },
                 onComplete: function() {
-                    $phone.css('top', '944px');
+                    _move_phone(944, $os);
                 },
                 onReverseComplete: function() {
-                    $phone.css('top', '220px');
+                    _move_phone(220, $overview);
                 }
             }
         };
@@ -119,13 +185,13 @@
             to: {
                 css: { top: -240 },
                 onStart: function() {
-                    $phone.css('z-index', 112);
+                    $phone.css('z-index', 120);
                 },
                 onComplete: function() {
-                    $phone.css('top', '1520px');
+                    _move_phone(1520, $marketplace);
                 },
                 onReverseComplete: function() {
-                    $phone.css({ 'top': '944px', 'z-index': 110 });
+                    _move_phone(944, $os, 110);
                 }
             }
         };
@@ -138,53 +204,17 @@
             to: {
                 css: { top: -360 },
                 onComplete: function() {
-                    $phone.css('top', '2200px');
+                    _move_phone(2200, $android);
                     $phone_android.css('bottom', '0px');
                 },
                 onReverseComplete: function() {
-                    $phone.css('top', '1520px');
+                    _move_phone(1520, $marketplace);
                     $phone_android.css('bottom', '-600px');
                 }
             }
         };
 
-        // only animate giantfox if on first section of #os
-        var _animate_giantfox = function() {
-            var left = $('#os-overview').position().left;
-
-            return (left === 0) ? true : false;
-        };
-
-        tweens.giantfox = {
-            from: {
-                css: { left: '65%', opacity: 0 },
-                immediateRender: true
-            },
-            to: {
-                css: { left: '45%', opacity: 1 },
-                onUpdateParams: ["{self}"],
-                onUpdate: function(tween) {
-                    /*
-                    // make sure tween isn't in the middle
-                    var progress = tween.progress();
-
-                    if (progress === 0 || progress === 1) {
-                        console.log('at beginning or end');
-                        var ok = _animate_giantfox();
-                        console.log("can animated = " + ok);
-                        if (ok) {
-                            console.log('playing');
-                            tween.play();
-                        } else {
-                            console.log('pausing');
-                            tween.progress(1);
-                            tween.pause();
-                        }
-                    }
-                    */
-                }
-            }
-        };
+        var prev_article = '#overview';
 
         $('.partner-article').each(function(i, article) {
             var $article = $(article);
@@ -209,8 +239,8 @@
                 tween = TweenMax.fromTo(
                     $tweener,
                     0.6,
-                    tweens.slide_down.from,
-                    tweens.slide_down.to
+                    tweens.slide_up.from,
+                    tweens.slide_up.to
                 );
 
                 my_tweens.push(tween);
@@ -218,25 +248,16 @@
 
             if (my_tweens.length > 0) {
                 controller.addTween(
-                    '#' + $article.attr('id'),
+                    prev_article,
                     (new TimelineLite()).append(my_tweens),
-                    250, // scroll duration
-                    -200 // start offset
+                    350, // scroll duration
+                    500 // start offset
                 );
             }
-        });
 
-        // BIG TAIL FIREFOX!
-        controller.addTween(
-            '#giantfox',
-            TweenMax.fromTo(
-                $giantfox,
-                0.8,
-                tweens.giantfox.from,
-                tweens.giantfox.to
-            ),
-            0,
-            -200
-        );
+            if ($article.attr('id') !== 'overview') {
+                prev_article = '#' + $article.attr('id');
+            }
+        });
     //});
 })(window, window.jQuery, window.TweenMax, window.TimelineLite, window.Power2, window.Quad);
