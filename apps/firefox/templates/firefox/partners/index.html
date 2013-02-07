@@ -36,13 +36,18 @@
     {% endblock %}
 
   </header>
+  <h3 id="explore">{{_('Explore the site') }}</h3>
   <nav id="partner-nav" role="navigation">
-    <h3>{{_('Explore the site') }}</h3>
     <ul id="partner-menu" class="menu">
       <li id="menu-overview"><a href="#overview">{{_('Overview')}}</a></li>
       <li id="menu-os"><a href="#os">{{_('Firefox OS')}}</a></li>
       <li id="menu-marketplace"><a href="#marketplace">{{_('Marketplace')}}</a></li>
       <li id="menu-android"><a href="#android">{{_('Android')}}</a></li>
+    </ul>
+    <ul id="mwc-menu" class="menu">
+      <li class="title">{{ _('MWC') }}</li>
+      <li id="menu-location"><a href="#location">{{_('Location')}}</a></li>
+      <li id="menu-schedule"><a href="#schedule">{{_('Schedule')}}</a></li>
     </ul>
   </nav>
   <ul id="overlay-menu" class="menu">

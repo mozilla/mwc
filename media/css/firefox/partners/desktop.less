@@ -63,11 +63,37 @@
             padding: 30px 0 0 40px;
             a {
                 display: inline-block;
-                color: #fff;
-                background: rgba(0,0,0,0.1);
+                color: @textColorSecondary;
+                background: rgba(166,189,206,0.2);
+                border: 1px solid rgba(173,201,222,0.4);
                 padding: 10px;
                 border-radius: 4px;
                 margin-left: 20px;
+                text-transform: uppercase;
+                position: relative;
+                .transition();
+                &:hover {
+                    text-decoration: none;
+                    background: rgba(166,189,206,0.4);
+                }
+                &:first-child {
+                    background: #fff;
+                    border: #fff;
+                    color: @textColorSecondary;
+                    @shadow: 0 1px 2px rgba(0,0,0,0.4);
+                    .box-shadow(@shadow);
+                    &:after {
+                        content: " ";
+                        display: block;
+                        position: absolute;
+                        height: 12px;
+                        width: 25px;
+                        background: url(/media/img/firefox/partners/menu-icons.png) 50% -1140px no-repeat;
+                        bottom: -12px;
+                        left: 50%;
+                        margin-left: -12px;
+                    }
+                }
             }
         }
     }
@@ -92,6 +118,15 @@
             a {
                 color: #fff;
                 background: rgba(255,255,255,0.1);
+                &:hover {
+                    text-decoration: none;
+                    background: rgba(255,255,255,0.2);
+                }
+                &:first-child {
+                    background: #fff;
+                    border: #fff;
+                    color: @textColorSecondary;
+                }
             }
         }
     }
@@ -297,25 +332,28 @@ h2 {
     top: 160px;
     left: 30px;
     width: 60px;
-    h3 {
-        position: absolute;
-        display: block;
-        font-family: Journal;
-        color: #fff;
-        text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-        letter-spacing: normal;
-        line-height: 0.9;
-        top: -70px;
-        left: 0;
-        width: 80px;
-        padding: 0 0 20px 50px;
-        margin: 0;
-        font-size: 30px;
-        background: url(/media/img/firefox/partners/menu-icons.png) 0 -720px no-repeat;
-    }
+}
+
+#explore {
+    position: absolute;
+    display: block;
+    z-index: 1;
+    font-family: Journal;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    letter-spacing: normal;
+    line-height: 0.9;
+    top: 80px;
+    left: 34px;
+    width: 50px;
+    padding: 0 0 20px 50px;
+    margin: 0;
+    font-size: 23px;
+    background: url(/media/img/firefox/partners/menu-icons.png) 0 -720px no-repeat;
 }
 
 .menu {
+    margin-bottom: @baseLine;
     li {
         display: block;
         float: none;
@@ -330,12 +368,22 @@ h2 {
         &:last-child a {
             border-radius: 0 0 3px 3px;
         }
+        &.title {
+            border-radius: 3px 3px 0 0;
+            background: #515f6a;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+        }
     }
 }
 
+
 #overlay-menu {
     display: block;
-    position: absolute;
+    position: fixed;
     top: 70px;
     right: 20px;
     z-index: 100;
@@ -351,7 +399,7 @@ h2 {
             width: 40px;
             height: 40px;
         }
-        a:hover { background-position: 50% -850px; }
+        &.active a { background-position: 50% -850px; }
     }
 }
 
