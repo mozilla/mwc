@@ -19,6 +19,9 @@
   {{ js('partners') }}
 {% endblock %}
 
+{% block page_title_prefix %}{% endblock %}
+{% block page_title %}{{ _('Firefox at MWC 2013') }}{% endblock %}
+
 {% block string_data %}
   {# L10N: This is the label for a button that closes a modal dialog #}
   data-close="{{ _('Close') }}"
@@ -65,6 +68,7 @@
 <div class="phone-container" id="phone-common">
   <div class="phone">
     <div id="foxtail"></div>
+    <div id="gloss"></div>
   </div>
 </div>
 
@@ -74,7 +78,9 @@
       <div class="article-content">
         <h2>{{ _('Blaze Your Own Path') }}</h2>
         <div class="intro">
-          <p>We’re enabling operators, phone manufacturers and developers to manage, customize and own relationships with their customers directly through our mobile products: <a href="#os">Firefox OS</a>, <a href="#marketplace">Firefox Marketplace</a> and <a href="#android">Firefox for Android</a>.</p>
+          <p>{% trans url1='href="#os"', url2='href="#marketplace"', url3='href="#android"' %}
+          We’re enabling operators, phone manufacturers and developers to manage, customize and own relationships with their customers directly through our mobile products: <a {{url1}}>Firefox OS</a>, <a {{url2}}>Firefox Marketplace</a> and <a {{url3}}>Firefox for Android</a>.
+          {% endtrans %}</p>
           <div class="partner-logos">
             <ul class="logos">
               <li>logo</li>
@@ -160,10 +166,6 @@
             <p class="partner-button"><a href="#" class="button">{{ _('Partner with us') }}</a></p>
             <div id="os-promos" class="promos">
               <div class="first">
-                <h4>{{ _('White Papers') }}</h4>
-                <a href="">{{ _('Learn more about the technology behind Firefox OS') }}</a>
-              </div>
-              <div>
                 <h4>{{ _('Get Involved') }}</h4>
                 <a href="">{{ _('Contact our business development team to get on board') }}</a>
               </div>
@@ -273,7 +275,7 @@
               <a href="">{{ _('Submit it to the Firefox Marketplace today') }}</a>
             </div>
             <div>
-              <h4>{{ _('WIPJAM') }}</h4>
+              <h4>WIPJam</h4>
               <a href="">{{ _('Jam with us, learn about new tools, meet other developers and more') }}</a>
             </div>
             <div>
@@ -402,7 +404,7 @@
         <div class="day">
           <h4><span>{{ _('Thursday') }}</span> {{ _('February 28') }}</h4>
           <div class="day-contents">
-            <h3>{{ _('WIPJam') }}</h3>
+            <h3>WIPJam</h3>
             <div class="time">{{ _('09:00–16:00') }}</div>
             <div class="location">{{ _('Hall 8.0, Theatre B, Theatre District, App Planet ') }}</div>
           </div>
@@ -462,7 +464,7 @@
       </div>
 
       <div class="field">
-        <label for="00NU0000002pDJr">Interest:</label>
+        <label for="00NU0000002pDJr">{{ _('Interest:') }}</label>
         <select  id="00NU0000002pDJr" multiple="multiple" name="00NU0000002pDJr" title="{{ _('Interest') }}" size="7">
           <option value="Firefox for Desktop">{{ _('Firefox for Desktop') }}</option>
           <option value="Firefox for Android">{{ _('Firefox for Android') }}</option>
