@@ -155,3 +155,25 @@ def all_downloads(request):
         'test_builds': firefox_details.get_filtered_test_builds(version, query),
         'query': query,
     })
+
+def firefox_partners(request):
+
+    locale_os_urls = {
+        'en-US': 'englishOsUrl',
+        'de': 'http://blog.mozilla.org/press-de/?p=760',
+        'it': 'http://blog.mozilla.org/press-it/?p=347',
+        'pl': 'http://blog.mozilla.org/press-pl/?p=407',
+        'fr': 'http://blog.mozilla.org/press-fr/?p=366',
+        'es-ES': 'http://blog.mozilla.org/press-es/?p=340',
+        'en-GB': 'http://blog.mozilla.org/press-uk/?p=471'
+    }
+
+    # If the current locale isn't in our list, return the en-US value
+    if request.locale in locale_os_urls:
+        locale_os_url = locale_os_urls[request.locale]
+    else:
+        locale_os_url = locale_os_urls['en-US']
+
+    return l10n_utils.render(request, 'firefox/partners/index.html', {
+        'locale_os_url': locale_os_url,
+    })
